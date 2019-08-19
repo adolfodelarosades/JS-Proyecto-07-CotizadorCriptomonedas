@@ -1,3 +1,6 @@
+const ui = new Interfaz();
+
+
 // Leer el formulario
 const formulario = document.querySelector('#formulario');
 
@@ -16,7 +19,8 @@ formulario.addEventListener('submit', (e)=>{
 
     if( monedaSeleccionada === '' || criptoMonedaSeleccionada === ''){
         // Arrojar una alerta de error
+        ui.mostrarMensaje('Ambos campos son obligatorios', 'alert bg-danger text-center');
     }else{
         // Todo bien, consultar la api
-    
+    }
 });
