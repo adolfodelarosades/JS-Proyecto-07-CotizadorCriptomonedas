@@ -10,10 +10,16 @@ class Interfaz {
     construirSelect(){
         cotizador.obtenerMonedasAPI()
             .then( monedas => {
-                console.log(monedas);
+                //monedas.monedas.Data Es un Objeto de Objetos
+                //console.log(monedas.monedas.Data);
+                //Object.entries(monedas.monedas.Data) : Conviente un objeto a array
+                //console.log(Object.entries(monedas.monedas.Data));
+                for( const [key, value] of Object.entries(monedas.monedas.Data ) ){
+                    console.log(key, value);
+                }
             });
     }
-    
+
     mostrarMensaje(mensaje, clases){
         const div = document.createElement('div');
         div.className = clases;
