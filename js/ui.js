@@ -14,8 +14,16 @@ class Interfaz {
                 //console.log(monedas.monedas.Data);
                 //Object.entries(monedas.monedas.Data) : Conviente un objeto a array
                 //console.log(Object.entries(monedas.monedas.Data));
+                
+                // Crear un select de criptomonedas
+                const select = document.querySelector('#criptomoneda');
+                //Iterar por los resultados de la API
                 for( const [key, value] of Object.entries(monedas.monedas.Data ) ){
-                    console.log(key, value);
+                    //console.log(key, value);
+                    const opcion = document.createElement('option');
+                    opcion.value = value.Symbol;
+                    opcion.appendChild(document.createTextNode(value.CoinName));
+                    select.appendChild(opcion);
                 }
             });
     }
