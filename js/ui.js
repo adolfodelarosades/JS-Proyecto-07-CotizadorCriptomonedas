@@ -45,8 +45,27 @@ class Interfaz {
 
     //Imprime el resultado de la cotización
     mostrarResultado( resultado, moneda, crypto){
-        console.log(resultado);
-        console.log(resultado[crypto]);
-        console.log(resultado[crypto][moneda]);
+        //console.log(resultado);
+        //console.log(resultado[crypto]);
+        //console.log(resultado[crypto][moneda]);
+
+        const datosMoneda = resultado[crypto][moneda];
+        let lastUpdate = new Date(datosMoneda.LASTUPDATE * 1000).toLocaleDateString('es-ES');
+
+        // Construir el template
+        let templateHTML =`
+            <div class="card bg-warning">
+                <div class="card-body text-light">
+                    <h2 class="card-title">Resultados:</h2>
+                    <p>El precio de ${datosMoneda.FROMSYMBOL} a moneda ${datosMoneda.TOSYMBOL}
+                    es de : ${datosMoneda.PRICE.toFixed(2)} ${datosMoneda.TOSYMBOL}</p>
+                    <p>Variación último día  ${datosMoneda.CHANGEPCTDAY.toFixed(2)}%</p>
+                    <p>Última actualización: ${lastUpdate}</p>
+                </div>
+            </div>
+        `;
+
+        //Insertar el resultado
+        document.querySelector('#resultado').innerHTML = templateHTML;
     }
 }
